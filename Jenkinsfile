@@ -19,8 +19,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-		print "Docker Login"
-		sh '/usr/local/bin/docker login -u $DOCKER_USERNAME --password-stdin'
+	
                 print "Docker Build Image"
 		sh '/usr/local/bin/docker build -t csi401-frontend .'
 
