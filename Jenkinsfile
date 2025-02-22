@@ -24,8 +24,8 @@ pipeline {
   
                 print "Docker Build Image"
 		script {
-		    sh "/usr/local/bin/docker login --username admin --password-stdin"
-                    sh "/usr/local/bin/docker build -t csi401-frontend ."
+		    sh "/usr/local/bin/docker pull --disable-content-trust=false node:20-alpine"
+                    sh "DOCKER_BUILDKIT=0 /usr/local/bin/docker build -t csi401-frontend ."
                 }
 		
 		
