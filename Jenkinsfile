@@ -21,22 +21,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-		    
-		print  "Logging into Local Docker Registry..."
-		script {
-                    sh "echo 'admin' | /usr/local/bin/docker login localhost:5000 --username admin --password-stdin"
-		}
   
                 print "Docker Build Image"
 		script {
                     sh "/usr/local/bin/docker build -t csi401-frontend ."
                 }
 		
-		print "Docker Run Container"
-
-		script {
-                    sh "/usr/local/bin/docker run -d -p 54100:3000 csi401-frontend"
-                }
+		
             }
         }
         stage('Test') {
