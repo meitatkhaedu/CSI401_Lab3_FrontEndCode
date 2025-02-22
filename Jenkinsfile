@@ -24,7 +24,7 @@ pipeline {
 		    
 		print  "Logging into Local Docker Registry..."
 		script {
-                    sh "/usr/local/bin/docker login  --username sunmeepoko@gmail.com --password \$@Poko#06"
+                    sh "echo 'admin' | docker login localhost:5000 --username admin --password-stdin"
 		}
   
                 print "Docker Build Image"
