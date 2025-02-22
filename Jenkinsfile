@@ -21,7 +21,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-	
+		    
+		print  "Logging into Local Docker Registry..."
+		script {
+                    sh "/usr/local/bin/docker login ${LOCAL_REGISTRY} --username admin --password admin"
+		}
+  
                 print "Docker Build Image"
 		script {
                     sh "/usr/local/bin/docker build -t ${LOCAL_REGISTRY}/csi401-frontend ."
