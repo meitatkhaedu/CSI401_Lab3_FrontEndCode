@@ -30,7 +30,8 @@ pipeline {
 
 		print "Docker Image to Running Container"
 		script {
-		    sh "/usr/local/bin/docker -d -p 54100:3000 csi401-frontend"
+		    sh "/usr/local/bin/docker rm -f csi401-frontend-run || true"
+		    sh "/usr/local/bin/docker run -d --name csi401-frontend-run -p 3000:54100 csi401-frontend:latest"
                     
                 }
 		
