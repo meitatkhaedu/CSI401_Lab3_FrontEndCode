@@ -35,7 +35,7 @@ pipeline {
 		print "Docker Run Container"
 
 		script {
-                    sh "/usr/local/bin/docker run -d -p csi401-frontend"
+                    sh "/usr/local/bin/docker run -d -p 54100:3000 csi401-frontend"
                 }
             }
         }
