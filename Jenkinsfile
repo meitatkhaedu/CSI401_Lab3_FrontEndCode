@@ -24,6 +24,7 @@ pipeline {
   
                 print "Docker Build Image"
 		script {
+		    sh "/usr/local/bin/docker login --username admin --password-stdin"
                     sh "/usr/local/bin/docker build -t csi401-frontend ."
                 }
 		
