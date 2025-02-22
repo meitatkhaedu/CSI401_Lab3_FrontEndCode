@@ -1,4 +1,8 @@
 pipeline {
+environment {
+        DOCKER_USERNAME = credentials('sunmeepoko@gmail.com')
+        DOCKER_PASSWORD = credentials('$@Poko#06')
+    }
     agent any
     stages {
         stage('Checkout') {
@@ -17,8 +21,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-		sh '/usr/local/bin/docker --version'
-                sh '/usr/local/bin/docker info'
+		print "Docker Login"
+		sh '/usr/local/bin/docker login -u $DOCKER_USERNAME --password-stdin'
                 print "Docker Build Image"
 		sh '/usr/local/bin/docker build -t csi401-frontend .'
 
