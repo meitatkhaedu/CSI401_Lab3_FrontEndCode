@@ -1,9 +1,10 @@
 pipeline {
-environment {
+
+    agent any
+    environment {
         DOCKER_USERNAME = credentials('sunmeepoko@gmail.com')
         DOCKER_PASSWORD = credentials('$@Poko#06')
     }
-    agent any
     stages {
         stage('Checkout') {
             steps {
