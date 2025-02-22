@@ -27,7 +27,12 @@ pipeline {
 		    sh "/usr/local/bin/docker pull --disable-content-trust=false node:20-alpine"
                     sh "DOCKER_BUILDKIT=0 /usr/local/bin/docker build -t csi401-frontend ."
                 }
-		
+
+		print "Docker Image to Running Container"
+		script {
+		    sh "/usr/local/bin/docker -d -p 54100:3000 csi401-frontend"
+                    
+                }
 		
             }
         }
