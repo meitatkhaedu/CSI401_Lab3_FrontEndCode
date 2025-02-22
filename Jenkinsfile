@@ -2,8 +2,7 @@ pipeline {
 
     agent any
     environment {
-        DOCKER_USERNAME = credentials('docker-username')
-        DOCKER_PASSWORD = credentials('docker-password')
+        LOCAL_REGISTRY = "localhost:5000"
     }
     stages {
         stage('Checkout') {
@@ -25,17 +24,14 @@ pipeline {
 	
                 print "Docker Build Image"
 		script {
-                    sh "echo $DOCKER_PASSWORD | /usr/local/bin/docker login -u $DOCKER_USERNAME --password-stdin"
+                    sh "/usr/local/bin/docker build -t ${LOCAL_REGISTRY}/csi401-frontend ."
                 }
-
-		script {
-			sh '/usr/local/bin/docker build -t csi401-frontend .'
-		}
+		
 		print "Docker Run Container"
 
 		script {
-			sh '/usr/local/bin/docker run -d -p 44510:44513 csi401-frontend'
-		}
+                    sh "docker push ${LOCAL_REGISTRY}/csi401-frontend"
+                }
             }
         }
         stage('Test') {
