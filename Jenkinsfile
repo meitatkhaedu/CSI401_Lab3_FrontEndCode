@@ -23,7 +23,10 @@ pipeline {
             steps {
   
                 print "Docker Build Image"
-		
+		script {
+		        sh "DOCKER_BUILDKIT=0 docker build -t csi401-frontend ."
+              }
+
 		print "Docker Image to Running Container"
 		script {
 		    sh "docker rm -f csi401-frontend-run || true"
