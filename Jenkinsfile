@@ -23,15 +23,11 @@ pipeline {
             steps {
   
                 print "Docker Build Image"
-		script {
-		    sh "/usr/local/bin/docker pull --disable-content-trust=false node:20-alpine"
-                    sh "DOCKER_BUILDKIT=0 /usr/local/bin/docker build -t csi401-frontend ."
-                }
-
+		
 		print "Docker Image to Running Container"
 		script {
-		    sh "/usr/local/bin/docker rm -f csi401-frontend-run || true"
-		    sh "/usr/local/bin/docker run -d --name csi401-frontend-run -p 54100:3000 csi401-frontend:latest"
+		    sh "docker rm -f csi401-frontend-run || true"
+		    sh "docker run -d --name csi401-frontend-run -p 54100:3000 csi401-frontend:latest"
                     
                 }
 		

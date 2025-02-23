@@ -1,5 +1,7 @@
 FROM node:20-alpine
-	WORKDIR /app
-	COPY . .
-	RUN yarn
-	CMD ["yarn", "start"]
+WORKDIR /app
+COPY . .
+RUN yarn
+
+EXPOSE 3000
+CMD ["yarn", "start"]
