@@ -23,14 +23,14 @@ pipeline {
             steps {
                 print "Docker Build Image"
                 script {
-                        sh "docker build -t csi401-frontend ."
+                        bat "docker build -t csi401-frontend ."
                         print "Docker Build Image Success"
                 }
 
                 print "Docker Image to Running Container"
                 script {
-                    sh "docker rm -f csi401-frontend-run || true"
-                    sh "docker run -d --name csi401-frontend-run -p 54100:3000 csi401-frontend:latest"
+                    bat "docker rm -f csi401-frontend-run || true"
+                    bat "docker run -d --name csi401-frontend-run -p 54100:3000 csi401-frontend:latest"
                     print "Docker Image to Running Container Success"     
                 }
 		
