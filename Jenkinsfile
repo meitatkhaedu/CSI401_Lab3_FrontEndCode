@@ -49,7 +49,8 @@ pipeline {
             	])
 
 		print "Install Robot"
-		sh "pip install robotframework"
+		sh 'sudo apt update && sudo apt install -y python3 python3-pip'
+                sh 'pip install robotframework'
 		print "Install Selenium"
 		sh "pip install robotframework-seleniumlibrary"
 		print "Run Test"
