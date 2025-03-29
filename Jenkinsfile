@@ -47,17 +47,18 @@ pipeline {
 			            url: 'https://github.com/meitatkhaedu/csi403_automation_testing.git' 
 			]  ]
             	])
-
-		print "Install Robot"
-		sh 'curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-                sh 'python3 get-pip.py'
-                sh 'pip3 install robotframework'
-                print "Install Selenium Library"
-                sh 'pip3 install robotframework-seleniumlibrary'
-		print "Verify Robot Framework installation"
-                sh 'robot --version'  
-                print "Run Robot Framework Tests"
-                sh 'robot testSPU.robot'
+		dir('csi403_automation_testing') {
+			print "Install Robot"
+			sh 'curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
+	                sh 'python3 get-pip.py'
+	                sh 'pip3 install robotframework'
+	                print "Install Selenium Library"
+	                sh 'pip3 install robotframework-seleniumlibrary'
+			print "Verify Robot Framework installation"
+	                sh 'robot --version'  
+	                print "Run Robot Framework Tests"
+	                sh 'robot testSPU.robot'
+		}
             }
         }
         
