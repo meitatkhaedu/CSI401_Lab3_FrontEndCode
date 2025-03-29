@@ -23,14 +23,14 @@ pipeline {
             steps {
                 print "Docker Build Image"
                 script {
-                        bat "docker build -t csi401-frontend ."
+                        sh "docker build -t csi401-frontend ."
                         print "Docker Build Image Success"
                 }
 
                 print "Docker Image to Running Container"
                 script {
-                    bat "docker rm -f csi401-frontend-run || true"
-                    bat "docker run -d --name csi401-frontend-run -p 54100:3000 csi401-frontend:latest"
+                    sh "docker rm -f csi401-frontend-run || true"
+                    sh "docker run -d --name csi401-frontend-run -p 54100:3000 csi401-frontend:latest"
                     print "Docker Image to Running Container Success"     
                 }
 		
@@ -49,9 +49,7 @@ pipeline {
             	])
 
 		print "Run Test"
-		sh """
-                    robot testSPU.robot
-                """
+		sh "robot testSPU.robot"
             }
         }
         
