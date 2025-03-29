@@ -48,6 +48,10 @@ pipeline {
 			]  ]
             	])
 
+		print "Install Robot"
+		sh "pip install robotframework"
+		print "Install Selenium"
+		sh "pip install robotframework-seleniumlibrary"
 		print "Run Test"
 		sh "robot testSPU.robot"
             }
