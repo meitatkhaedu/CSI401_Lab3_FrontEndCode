@@ -49,12 +49,13 @@ pipeline {
             	])
 
 		print "Install Robot"
-		sh 'sudo apt update && sudo apt install -y python3 python3-pip'
+		sh 'curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
+                sh 'python3 get-pip.py'
                 sh 'pip install robotframework'
-		print "Install Selenium"
-		sh "pip install robotframework-seleniumlibrary"
-		print "Run Test"
-		sh "robot testSPU.robot"
+                print "Install Selenium Library"
+                sh 'pip install robotframework-seleniumlibrary'
+                print "Run Robot Framework Tests"
+                sh 'robot testSPU.robot'
             }
         }
         
