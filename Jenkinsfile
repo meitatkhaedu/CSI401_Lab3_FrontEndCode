@@ -57,7 +57,7 @@ pipeline {
 			print "Verify Robot Framework installation"
 	                sh 'pip3 show robotframework'
 	                print "Run Robot Framework Tests"
-	                sh 'robot testSPU.robot'
+	                sh 'pip3 robot testSPU.robot'
 		}
             }
         }
