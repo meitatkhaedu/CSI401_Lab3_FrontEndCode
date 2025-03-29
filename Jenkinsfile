@@ -51,9 +51,9 @@ pipeline {
 		print "Install Robot"
 		sh 'curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
                 sh 'python3 get-pip.py'
-                sh 'pip install robotframework'
+                sh 'pip3 install robotframework'
                 print "Install Selenium Library"
-                sh 'pip install robotframework-seleniumlibrary'
+                sh 'pip3 install robotframework-seleniumlibrary'
                 print "Run Robot Framework Tests"
                 sh 'robot testSPU.robot'
             }
