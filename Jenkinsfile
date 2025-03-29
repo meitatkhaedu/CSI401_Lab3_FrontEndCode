@@ -47,7 +47,7 @@ pipeline {
 			            url: 'https://github.com/meitatkhaedu/csi403_automation_testing.git' 
 			]  ]
             	])
-		dir('csi403_automation_testing') {
+		
 			print "Install Robot"
 			sh 'curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
 	                sh 'python3 get-pip.py'
@@ -58,7 +58,7 @@ pipeline {
 	                sh 'pip3 show robotframework'
 	                print "Run Robot Framework Tests"
 	                sh 'python3 -m robot testSPU.robot'
-		}
+		
             }
         }
         
