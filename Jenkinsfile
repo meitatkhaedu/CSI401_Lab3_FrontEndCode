@@ -38,7 +38,20 @@ pipeline {
         }
         stage('Test') {
             steps {
-                print "Hello Test"
+		print "Clone Automation Testing Project"
+                checkout([
+	                $class: 'GitSCM', 
+	                branches: [[name: '*/main']], 
+	                userRemoteConfigs: [  [ 
+			            credentialsId: 'meitat', 
+			            url: 'https://github.com/meitatkhaedu/csi403_automation_testing.git' 
+			]  ]
+            	])
+
+		print "Run Test"
+		sh """
+                    robot testSPU.robot
+                """
             }
         }
         
