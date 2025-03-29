@@ -54,6 +54,8 @@ pipeline {
                 sh 'pip3 install robotframework'
                 print "Install Selenium Library"
                 sh 'pip3 install robotframework-seleniumlibrary'
+		print "Verify Robot Framework installation"
+                sh 'robot --version'  
                 print "Run Robot Framework Tests"
                 sh 'robot testSPU.robot'
             }
